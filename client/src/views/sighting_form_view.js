@@ -18,6 +18,7 @@ SightingFormView.prototype.handleSubmit = function (evt) {
     date: evt.target.date.value
   };
   PubSub.publish('SightingView:sighting-submitted', newSighting);
+  this.form.reset();
 };
 
 module.exports = SightingFormView;
