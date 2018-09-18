@@ -38,7 +38,10 @@ const createRouter = function (collection) {
         collection
         .find()
         .toArray()
-        .then((docs) => res.json(docs));
+        .then((docs) => {
+          console.log(docs);
+          res.json(docs)
+        });
       });
   });
 

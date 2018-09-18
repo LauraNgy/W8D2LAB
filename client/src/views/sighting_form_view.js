@@ -1,4 +1,4 @@
-const PubSub = require('../helpers/pub_sub.js')
+const PubSub = require('../helpers/pub_sub.js');
 
 const SightingFormView = function (form) {
   this.form = form;
@@ -12,6 +12,12 @@ SightingFormView.prototype.bindEvents = function () {
 
 SightingFormView.prototype.handleSubmit = function (evt) {
   evt.preventDefault();
-}
+  const newSighting = {
+    species: evt.target.species.value,
+    location: evt.target.location.value,
+    date: evt.target.date.value
+  };
+  PubSub.publish('SightingView:sighting-submitted', newSighting);
+};
 
 module.exports = SightingFormView;
